@@ -1,0 +1,527 @@
+fileFormatVersion: 2
+guid: aa7829f2e41ad0d40a97f5c07d309e55
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 6519619829099197012
+    second: Gomi_alt_0
+  - first:
+      213: 1680945991572055358
+    second: Gomi_alt_1
+  - first:
+      213: 4855393529226267038
+    second: Gomi_alt_2
+  - first:
+      213: -3246856905629471735
+    second: Gomi_alt_3
+  - first:
+      213: -6874818206984556880
+    second: Gomi_alt_4
+  - first:
+      213: -5638121100948183550
+    second: Gomi_alt_5
+  - first:
+      213: 7466425822698788505
+    second: Gomi_alt_6
+  - first:
+      213: -4308475664227416332
+    second: Gomi_alt_7
+  - first:
+      213: -2096063767631744223
+    second: Gomi_alt_8
+  - first:
+      213: -6912400988013720973
+    second: Gomi_alt_9
+  - first:
+      213: -7796424566268515321
+    second: Gomi_alt_10
+  - first:
+      213: 3565657461876196765
+    second: Gomi_alt_11
+  - first:
+      213: 8820383586175409390
+    second: Gomi_alt_12
+  - first:
+      213: 4239325153529822535
+    second: Gomi_alt_13
+  - first:
+      213: 8811393070164723141
+    second: Gomi_alt_14
+  - first:
+      213: -6395096236460079721
+    second: Gomi_alt_15
+  - first:
+      213: 735557824516287205
+    second: Gomi_alt_16
+  - first:
+      213: -3254976935123208055
+    second: Gomi_alt_17
+  - first:
+      213: -1930907147608100309
+    second: Gomi_alt_18
+  - first:
+      213: -3842303722428687167
+    second: Gomi_alt_19
+  - first:
+      213: -8477477399981442480
+    second: Gomi_alt_20
+  - first:
+      213: 1083995827798121600
+    second: Gomi_alt_21
+  - first:
+      213: -7886668689861070661
+    second: Gomi_alt_22
+  - first:
+      213: 92992244640870475
+    second: Gomi_alt_23
+  - first:
+      213: -6783537060912046827
+    second: Gomi_alt_24
+  - first:
+      213: -5908482241028860031
+    second: Gomi_alt_25
+  - first:
+      213: -2441494544201588532
+    second: Gomi_alt_26
+  - first:
+      213: 4404464051805035966
+    second: Gomi_alt_27
+  - first:
+      213: -1702137801462958033
+    second: Gomi_alt_28
+  - first:
+      213: 3372392369306109314
+    second: Gomi_alt_29
+  - first:
+      213: -4980503987385942926
+    second: Gomi_alt_30
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 50
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 1
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Gomi_alt_1
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 615
+        width: 232
+        height: 409
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e35e44a297be35710800000000000000
+      internalID: 1680945991572055358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gomi_alt_2
+      rect:
+        serializedVersion: 2
+        x: 453
+        y: 615
+        width: 217
+        height: 409
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e99034a90b2d16340800000000000000
+      internalID: 4855393529226267038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gomi_alt_6
+      rect:
+        serializedVersion: 2
+        x: 1407
+        y: 577
+        width: 219
+        height: 447
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 996d3c71ab21e9760800000000000000
+      internalID: 7466425822698788505
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gomi_alt_7
+      rect:
+        serializedVersion: 2
+        x: 1627
+        y: 583
+        width: 204
+        height: 441
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4f64f4ee5383534c0800000000000000
+      internalID: -4308475664227416332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gomi_alt_8
+      rect:
+        serializedVersion: 2
+        x: 1830
+        y: 575
+        width: 199
+        height: 449
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1233eb7db1949e2e0800000000000000
+      internalID: -2096063767631744223
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gomi_alt_9
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 615
+        width: 224
+        height: 409
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 37a0264cce73210a0800000000000000
+      internalID: -6912400988013720973
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gomi_alt_12
+      rect:
+        serializedVersion: 2
+        x: 676
+        y: 616
+        width: 217
+        height: 408
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eecdba4a32c486a70800000000000000
+      internalID: 8820383586175409390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gomi_alt_13
+      rect:
+        serializedVersion: 2
+        x: 1099
+        y: 575
+        width: 213
+        height: 447
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 74df58724cb15da30800000000000000
+      internalID: 4239325153529822535
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gomi_alt_21
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 16
+        width: 148
+        height: 448
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 08c99ed46702b0f00800000000000000
+      internalID: 1083995827798121600
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gomi_alt_22
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 17
+        width: 224
+        height: 448
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bb0b2a7ac9cec8290800000000000000
+      internalID: -7886668689861070661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gomi_alt_23
+      rect:
+        serializedVersion: 2
+        x: 382
+        y: 22
+        width: 196
+        height: 443
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b407fac24ff5a4100800000000000000
+      internalID: 92992244640870475
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gomi_alt_24
+      rect:
+        serializedVersion: 2
+        x: 577
+        y: 19
+        width: 168
+        height: 446
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 51dd3abdbf80cd1a0800000000000000
+      internalID: -6783537060912046827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gomi_alt_25
+      rect:
+        serializedVersion: 2
+        x: 743
+        y: 13
+        width: 145
+        height: 452
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 18755cdc4bad00ea0800000000000000
+      internalID: -5908482241028860031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 7811056fc54214f429f0507cbd56124f
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Gomi_alt_0: 1042024108
+      Gomi_alt_1: 1680945991572055358
+      Gomi_alt_12: 8820383586175409390
+      Gomi_alt_13: 4239325153529822535
+      Gomi_alt_15: -6395096236460079721
+      Gomi_alt_2: 4855393529226267038
+      Gomi_alt_21: 1083995827798121600
+      Gomi_alt_22: -7886668689861070661
+      Gomi_alt_23: 92992244640870475
+      Gomi_alt_24: -6783537060912046827
+      Gomi_alt_25: -5908482241028860031
+      Gomi_alt_26: -2441494544201588532
+      Gomi_alt_29: 3372392369306109314
+      Gomi_alt_30: -4980503987385942926
+      Gomi_alt_6: 7466425822698788505
+      Gomi_alt_7: -4308475664227416332
+      Gomi_alt_8: -2096063767631744223
+      Gomi_alt_9: -6912400988013720973
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
