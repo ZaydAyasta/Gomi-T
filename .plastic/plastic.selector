@@ -1,0 +1,4 @@
+repository "Gomi-T/Gomi-T@4673298280352@cloud"
+  path "/"
+    br "/main"
+    co "/main"
