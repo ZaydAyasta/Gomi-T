@@ -1,0 +1,884 @@
+fileFormatVersion: 2
+guid: 5cc620f298343d247aceaff072b90d88
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -212389796552170694
+    second: Gomi_assetsPH_0
+  - first:
+      213: 1534347644756195951
+    second: Gomi_assetsPH_1
+  - first:
+      213: -8799237651340551971
+    second: Gomi_assetsPH_2
+  - first:
+      213: -6285604344739994963
+    second: Gomi_assetsPH_3
+  - first:
+      213: -6880685425725893262
+    second: Gomi_assetsPH_4
+  - first:
+      213: -9124860458183081175
+    second: Gomi_assetsPH_5
+  - first:
+      213: -7937758729644017017
+    second: Gomi_assetsPH_6
+  - first:
+      213: -503798206800988297
+    second: Gomi_assetsPH_7
+  - first:
+      213: -634473862502515696
+    second: Gomi_assetsPH_8
+  - first:
+      213: 7950980243959358386
+    second: Gomi_assetsPH_9
+  - first:
+      213: 7094688679222664237
+    second: Gomi_assetsPH_10
+  - first:
+      213: 5349953103117351615
+    second: Gomi_assetsPH_11
+  - first:
+      213: -8323232065948451724
+    second: Gomi_assetsPH_12
+  - first:
+      213: 1556204153194873772
+    second: Gomi_assetsPH_13
+  - first:
+      213: -1305563586398833716
+    second: Gomi_assetsPH_14
+  - first:
+      213: -3600835988353918371
+    second: Gomi_assetsPH_15
+  - first:
+      213: 6452089817644355193
+    second: Gomi_assetsPH_16
+  - first:
+      213: -7691597923360724740
+    second: Gomi_assetsPH_17
+  - first:
+      213: -1901140536583688945
+    second: Gomi_assetsPH_18
+  - first:
+      213: 3559771154345942264
+    second: Gomi_assetsPH_19
+  - first:
+      213: -810071095920995799
+    second: Gomi_assetsPH_20
+  - first:
+      213: -7904428349292321452
+    second: Gomi_assetsPH_21
+  - first:
+      213: -7775250417654465641
+    second: Gomi_assetsPH_22
+  - first:
+      213: 6603185090501231504
+    second: Gomi_assetsPH_23
+  - first:
+      213: -7351635677507172082
+    second: Gomi_assetsPH_24
+  - first:
+      213: 4270542431143030339
+    second: Gomi_assetsPH_25
+  - first:
+      213: 8293694755306003179
+    second: Gomi_assetsPH_26
+  - first:
+      213: -1414541726833366995
+    second: Gomi_assetsPH_27
+  - first:
+      213: 6492863002023310636
+    second: Gomi_assetsPH_28
+  - first:
+      213: 5051466162279215057
+    second: Gomi_assetsPH_29
+  - first:
+      213: 4329075765406813779
+    second: Gomi_assetsPH_30
+  - first:
+      213: -8273317849348884337
+    second: Gomi_assetsPH_31
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: 12
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Gomi_assetsPH_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1569
+        width: 427
+        height: 479
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 524a87e065d7c7b499711a5fa2d029d2
+      internalID: -1627610496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gomi_assetsPH_1
+      rect:
+        serializedVersion: 2
+        x: 427
+        y: 1569
+        width: 427
+        height: 479
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b13b9c81022a55a46a9f9c65fa0a5210
+      internalID: -1748551938
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gomi_assetsPH_2
+      rect:
+        serializedVersion: 2
+        x: 854
+        y: 1569
+        width: 427
+        height: 479
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8461e963dba99c74b99d547cbd9c3439
+      internalID: 1118777433
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gomi_assetsPH_3
+      rect:
+        serializedVersion: 2
+        x: 1281
+        y: 1569
+        width: 427
+        height: 479
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b07e6f432d6e9e4abcbd4ab178972ee
+      internalID: 227842480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gomi_assetsPH_4
+      rect:
+        serializedVersion: 2
+        x: 1708
+        y: 1569
+        width: 427
+        height: 479
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5406275ddb8f2c84fb8ffd85e143fdf8
+      internalID: 497655049
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gomi_assetsPH_5
+      rect:
+        serializedVersion: 2
+        x: 2135
+        y: 1569
+        width: 427
+        height: 479
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c8fb559e8fa6a245a680a2d5b4836ae
+      internalID: -747704409
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gomi_assetsPH_6
+      rect:
+        serializedVersion: 2
+        x: 2562
+        y: 1569
+        width: 427
+        height: 479
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e211df949a235c4ea81a6b516298e11
+      internalID: 437249593
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gomi_assetsPH_7
+      rect:
+        serializedVersion: 2
+        x: 2989
+        y: 1569
+        width: 427
+        height: 479
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5226e9f35da46942a0715cf594471c8
+      internalID: -195661310
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gomi_assetsPH_8
+      rect:
+        serializedVersion: 2
+        x: 3416
+        y: 1569
+        width: 427
+        height: 479
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6146ad3ee89aa7e47a424345e26ee0a0
+      internalID: -991282395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gomi_assetsPH_9
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1090
+        width: 427
+        height: 479
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f950f26791525a44e936ad09ac1a3d69
+      internalID: 1024301350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gomi_assetsPH_10
+      rect:
+        serializedVersion: 2
+        x: 427
+        y: 1090
+        width: 427
+        height: 479
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 50c80bd545f4db64ea44887eb562083b
+      internalID: 1659995496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gomi_assetsPH_11
+      rect:
+        serializedVersion: 2
+        x: 854
+        y: 1090
+        width: 427
+        height: 479
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e46f5c8a9f5a714ca871e1d3f5a1cf7
+      internalID: 1008148094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gomi_assetsPH_12
+      rect:
+        serializedVersion: 2
+        x: 1281
+        y: 1090
+        width: 427
+        height: 479
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43cff4011fa1b694a82b76865dbd5f1c
+      internalID: 201510858
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gomi_assetsPH_13
+      rect:
+        serializedVersion: 2
+        x: 1708
+        y: 1090
+        width: 427
+        height: 479
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85700d5c5179c7741b3a4b8c219a07f8
+      internalID: -1269278134
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gomi_assetsPH_14
+      rect:
+        serializedVersion: 2
+        x: 2135
+        y: 1090
+        width: 427
+        height: 479
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3f34211514017a439a8677c47e820bf
+      internalID: -1076483286
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gomi_assetsPH_15
+      rect:
+        serializedVersion: 2
+        x: 2562
+        y: 1090
+        width: 427
+        height: 479
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 10c03e89c704759438d1dedbc2b0db77
+      internalID: -391414774
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gomi_assetsPH_16
+      rect:
+        serializedVersion: 2
+        x: 2989
+        y: 1090
+        width: 427
+        height: 479
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5bd7cf690843414088e19aafb305a2b
+      internalID: -1006829937
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gomi_assetsPH_17
+      rect:
+        serializedVersion: 2
+        x: 3416
+        y: 1090
+        width: 427
+        height: 479
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 461efcf496c552d4e82d1034c934539b
+      internalID: -1495059849
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gomi_assetsPH_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 611
+        width: 427
+        height: 479
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d697b789ab5a5044b5e7c5c2e462f0d
+      internalID: 1420552926
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gomi_assetsPH_19
+      rect:
+        serializedVersion: 2
+        x: 427
+        y: 611
+        width: 427
+        height: 479
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 536fead743fc57045a87648c4718fe09
+      internalID: 150934624
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gomi_assetsPH_20
+      rect:
+        serializedVersion: 2
+        x: 854
+        y: 611
+        width: 427
+        height: 479
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b45119ab0587dc4eab7124de2269a58
+      internalID: -1909884866
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gomi_assetsPH_21
+      rect:
+        serializedVersion: 2
+        x: 1281
+        y: 611
+        width: 427
+        height: 479
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71b9db20b01c54d408e0587bebfb7019
+      internalID: -1516918114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gomi_assetsPH_22
+      rect:
+        serializedVersion: 2
+        x: 1708
+        y: 611
+        width: 427
+        height: 479
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57e3ed86018f9da4e8461070f4f36acd
+      internalID: -2087814584
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gomi_assetsPH_23
+      rect:
+        serializedVersion: 2
+        x: 2135
+        y: 611
+        width: 427
+        height: 479
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 129b840c14a43c24098077861b6d4a17
+      internalID: -119462835
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gomi_assetsPH_24
+      rect:
+        serializedVersion: 2
+        x: 2562
+        y: 611
+        width: 427
+        height: 479
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64c62b4778636ba4b8a1f1ba3365963c
+      internalID: -1631277483
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gomi_assetsPH_25
+      rect:
+        serializedVersion: 2
+        x: 2989
+        y: 611
+        width: 427
+        height: 479
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: efdf6c335c04ba148965f25d243a2865
+      internalID: 969335953
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gomi_assetsPH_26
+      rect:
+        serializedVersion: 2
+        x: 3416
+        y: 611
+        width: 427
+        height: 479
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 50137438ee5f2e74e811d1cc5f42d42b
+      internalID: 176982524
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gomi_assetsPH_27
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 132
+        width: 427
+        height: 479
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87fec3dca1d0dc74aa82735e32f16d08
+      internalID: 1326420179
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Gomi_assetsPH_28
+      rect:
+        serializedVersion: 2
+        x: 3416
+        y: 132
+        width: 427
+        height: 479
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 700e847e8f6ed4041901d94fa134877b
+      internalID: 1005184708
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 96e5bc7ba7ea31e428322e782abca8bc
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceOnImport
+        value: False
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":427.0,"y":479.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"autoSlicingMethod":0,"spriteAlignment":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      Gomi_assetsPH_0: -1627610496
+      Gomi_assetsPH_1: -1748551938
+      Gomi_assetsPH_10: 1659995496
+      Gomi_assetsPH_11: 1008148094
+      Gomi_assetsPH_12: 201510858
+      Gomi_assetsPH_13: -1269278134
+      Gomi_assetsPH_14: -1076483286
+      Gomi_assetsPH_15: -391414774
+      Gomi_assetsPH_16: -1006829937
+      Gomi_assetsPH_17: -1495059849
+      Gomi_assetsPH_18: 1420552926
+      Gomi_assetsPH_19: 150934624
+      Gomi_assetsPH_2: 1118777433
+      Gomi_assetsPH_20: -1909884866
+      Gomi_assetsPH_21: -1516918114
+      Gomi_assetsPH_22: -2087814584
+      Gomi_assetsPH_23: -119462835
+      Gomi_assetsPH_24: -1631277483
+      Gomi_assetsPH_25: 969335953
+      Gomi_assetsPH_26: 176982524
+      Gomi_assetsPH_27: 1326420179
+      Gomi_assetsPH_28: 1005184708
+      Gomi_assetsPH_3: 227842480
+      Gomi_assetsPH_4: 497655049
+      Gomi_assetsPH_5: -747704409
+      Gomi_assetsPH_6: 437249593
+      Gomi_assetsPH_7: -195661310
+      Gomi_assetsPH_8: -991282395
+      Gomi_assetsPH_9: 1024301350
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
