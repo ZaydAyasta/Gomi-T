@@ -23,6 +23,8 @@ public class ArmLauncher : MonoBehaviour
     private PlayerMovement player;
     private SpringJoint2D springJoint;
 
+    //public bool IsHoldingBack => retrocediandoAtras;
+
     public bool IsFiring => lanzandoBr; //honestamente ni siquiera se que es esto
 
     void Start()
@@ -42,7 +44,6 @@ public class ArmLauncher : MonoBehaviour
             float currentDist = Vector2.Distance(transform.position, currentProjectile.transform.position);
             springJoint.distance = Mathf.Min(currentDist, maxGrappleDistance);
         }
-
 
         if (lanzandoBr)
         {
@@ -69,11 +70,38 @@ public class ArmLauncher : MonoBehaviour
             }
         }
 
+        if (springJoint != null && currentProjectile != null)
+        {
+            Vector2 anchorDir = (currentProjectile.transform.position - transform.position).normalized;
+            Vector2 playerVel = player.Rb.linearVelocity;
+
+            float dot = Vector2.Dot(playerVel.normalized, anchorDir);
+
+            IsHoldingBack = dot < -0.2f;
+        }
+        else
+        {
+            IsHoldingBack = false;
+        }
+
         if (Input.GetKeyUp(KeyCode.Q) && lanzandoBr)
         {
             StartCoroutine(ReturnProjectile());
         }
     }
+
+    public bool IsHoldingBack { get; private set; } = false;
+
+    public Transform CurrentAnchor
+    {
+        get
+        {
+            if (currentProjectile != null)
+                return currentProjectile.transform;
+            return null;
+        }
+    }
+
 
     public float maxGrappleDistance = 10f;
     public float minDistanceFactor = 0.2f;
@@ -177,7 +205,7 @@ public class ArmLauncher : MonoBehaviour
                 hookImpulseForce += backSpeed * 12f;
 
                 Vector2 finalImpulse = impulseDir * hookImpulseForce;
-                finalImpulse.y *= 1.3f; // buff pa q se mueva mas arriba 
+                finalImpulse.y *= 1.35f; // buff pa q se mueva mas arriba 
 
                 playerRb.AddForce(finalImpulse, ForceMode2D.Impulse);
             }

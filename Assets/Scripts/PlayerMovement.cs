@@ -29,12 +29,34 @@ public class PlayerMovement : MonoBehaviour
     {
         float move = Input.GetAxisRaw("Horizontal");
 
-        // Suavizamos la velocidad horizontal para permitir impulsos externos
+        // Suavizamos la velocidad horizontal
         float targetVelX = move * speed;
         float newVelX = Mathf.MoveTowards(rb.linearVelocity.x, targetVelX, acceleration * Time.deltaTime);
         rb.linearVelocity = new Vector2(newVelX, rb.linearVelocity.y);
 
-        anim.SetFloat("Speed", Mathf.Abs(move));
+        ArmLauncher launcher = FindFirstObjectByType<ArmLauncher>();
+        if (launcher != null && launcher.IsHoldingBack)
+        {
+            anim.SetBool("Hold", true);
+            anim.SetFloat("Speed", 0f);
+
+            // 👉 Flip hacia el proyectil
+            if (launcher.CurrentAnchor != null)
+            {
+                Vector2 dir = launcher.CurrentAnchor.position - transform.position;
+                if (dir.x > 0) sr.flipX = false;
+                else if (dir.x < 0) sr.flipX = true;
+            }
+        }
+        else
+        {
+            anim.SetBool("Hold", false);
+            anim.SetFloat("Speed", Mathf.Abs(move));
+
+            // 👉 Flip normal con input
+            if (move > 0) sr.flipX = false;
+            else if (move < 0) sr.flipX = true;
+        }
 
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
@@ -53,11 +75,8 @@ public class PlayerMovement : MonoBehaviour
             anim.SetBool("Down", true);
         else
             anim.SetBool("Down", false);
-
-        // FLIP
-        if (move > 0) sr.flipX = false;
-        else if (move < 0) sr.flipX = true;
     }
+
 
     private IEnumerator JumpWithDelay()
     {
