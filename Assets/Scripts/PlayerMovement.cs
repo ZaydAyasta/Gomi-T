@@ -6,9 +6,13 @@ public class PlayerMovement : MonoBehaviour
     [Header("Movimiento")]
     public float speed = 5f;
     public float jumpForce = 17f;
-    private Rigidbody2D rb;
 
-    private Animator anim;
+    public float acceleration = 40f;
+
+    private Rigidbody2D rb;
+    public Rigidbody2D Rb => rb;
+
+    [HideInInspector] public Animator anim;
     private bool isGrounded;
 
     [Header("Referencias")]
@@ -24,7 +28,11 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         float move = Input.GetAxisRaw("Horizontal");
-        rb.linearVelocity = new Vector2(move * speed, rb.linearVelocity.y);
+
+        // Suavizamos la velocidad horizontal para permitir impulsos externos
+        float targetVelX = move * speed;
+        float newVelX = Mathf.MoveTowards(rb.linearVelocity.x, targetVelX, acceleration * Time.deltaTime);
+        rb.linearVelocity = new Vector2(newVelX, rb.linearVelocity.y);
 
         anim.SetFloat("Speed", Mathf.Abs(move));
 
@@ -34,54 +42,45 @@ public class PlayerMovement : MonoBehaviour
             anim.SetBool("Jumping", true);
         }
 
-        //CAIDA?
+        // CAÍDA
         if (rb.linearVelocity.y < -0.1f && !isGrounded)
-        {
             anim.SetBool("Falling", true);
-             
-        }
         else
-        {
             anim.SetBool("Falling", false);
-        }
 
-        //AGACHARSE: NOTA, LUEGO QUITAR EL HARDCODE DE LA TECLA X'd
+        // AGACHARSE
         if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
-        {
             anim.SetBool("Down", true);
-        }
         else
-        {
             anim.SetBool("Down", false);
-        }
 
-        if (move > 0)
-            sr.flipX = false; // mira a la derecha
-        else if (move < 0)
-            sr.flipX = true;  // mira a la izquierda
-
-
+        // FLIP
+        if (move > 0) sr.flipX = false;
+        else if (move < 0) sr.flipX = true;
     }
 
     private IEnumerator JumpWithDelay()
     {
-        // Opcional: activar animación de "pre-salto"
         anim.SetBool("Jumping", true);
-
-        // Esperar 1/12 de segundo (~0.083s)
         yield return new WaitForSeconds(2f / 24f);
 
-        // Ejecutar el salto
+        rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0f);
         rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+        isGrounded = false;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.contacts[0].normal.y > 0.5f)
+        foreach (ContactPoint2D contact in collision.contacts)
         {
-            isGrounded = true;
-            anim.SetBool("Jumping", false);
-            anim.SetBool("Falling", false);
+            // Aceptamos como "suelo" superficies cuyo normal tenga un ángulo < 45° con Vector2.up
+            if (Vector2.Angle(contact.normal, Vector2.up) < 45f)
+            {
+                isGrounded = true;
+                anim.SetBool("Jumping", false);
+                anim.SetBool("Falling", false);
+                break;
+            }
         }
     }
 
