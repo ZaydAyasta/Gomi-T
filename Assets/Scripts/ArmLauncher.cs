@@ -22,10 +22,13 @@ public class ArmLauncher : MonoBehaviour
 
     private PlayerMovement player;
     private SpringJoint2D springJoint;
+    private Vector2 lastFireDirection;
 
-    //public bool IsHoldingBack => retrocediandoAtras;
+    public bool IsFiring => lanzandoBr;
+    public bool IsHoldingBack { get; private set; } = false;
 
-    public bool IsFiring => lanzandoBr; //honestamente ni siquiera se que es esto
+    public float maxGrappleDistance = 10f;
+    public float minDistanceFactor = 0.2f;
 
     void Start()
     {
@@ -54,6 +57,11 @@ public class ArmLauncher : MonoBehaviour
                 Vector3 start = transform.position;
                 Vector3 end = currentProjectile.transform.position;
 
+                if (player != null && player.anim.GetBool("Down"))
+                {
+                    start += Vector3.down * 0.5f;
+                }
+
                 Vector3 mid = (start + end) / 2f;
                 currentArmStretch.transform.position = mid;
 
@@ -70,13 +78,13 @@ public class ArmLauncher : MonoBehaviour
             }
         }
 
+        // Verificar si el jugador está tirando hacia atras, pa q se impulse
         if (springJoint != null && currentProjectile != null)
         {
             Vector2 anchorDir = (currentProjectile.transform.position - transform.position).normalized;
             Vector2 playerVel = player.Rb.linearVelocity;
 
             float dot = Vector2.Dot(playerVel.normalized, anchorDir);
-
             IsHoldingBack = dot < -0.2f;
         }
         else
@@ -90,8 +98,6 @@ public class ArmLauncher : MonoBehaviour
         }
     }
 
-    public bool IsHoldingBack { get; private set; } = false;
-
     public Transform CurrentAnchor
     {
         get
@@ -102,30 +108,21 @@ public class ArmLauncher : MonoBehaviour
         }
     }
 
-
-    public float maxGrappleDistance = 10f;
-    public float minDistanceFactor = 0.2f;
-
     public void AttachAnchor(Rigidbody2D anchorRb)
     {
         if (springJoint == null)
         {
             springJoint = gameObject.AddComponent<SpringJoint2D>();
             springJoint.autoConfigureDistance = false;
-
             springJoint.connectedBody = anchorRb;
 
             float initialDist = Vector2.Distance(transform.position, anchorRb.position);
             springJoint.distance = Mathf.Min(initialDist, maxGrappleDistance);
 
-            // Fuerza del resorte
             springJoint.frequency = 2.5f;
             springJoint.dampingRatio = 0.3f;
         }
     }
-
-
-
 
     void Fire()
     {
@@ -138,7 +135,6 @@ public class ArmLauncher : MonoBehaviour
         rb.gravityScale = 0f;
         rb.collisionDetectionMode = CollisionDetectionMode2D.Continuous;
 
-        //direccion del resorte, tmb si te agachas
         Vector2 dir;
         if (player.anim.GetBool("Down"))
         {
@@ -150,20 +146,20 @@ public class ArmLauncher : MonoBehaviour
             dir = player.sr.flipX ? Vector2.left : Vector2.right;
         }
 
+        lastFireDirection = dir.normalized;
         rb.linearVelocity = dir * projectileSpeed;
-
         currentArmStretch = Instantiate(armStretchPrefab);
     }
 
-    private System.Collections.IEnumerator ReturnProjectile()
+    private IEnumerator ReturnProjectile()
     {
         lanzandoBr = false;
         canShoot = false;
 
         Vector3 anchorPos = (currentProjectile != null) ? currentProjectile.transform.position : transform.position;
-        Vector2 impulseDir = Vector2.zero;
-        if ((anchorPos - transform.position).sqrMagnitude > 0.0001f)
-            impulseDir = (anchorPos - transform.position).normalized;
+
+        // Usa la dirección de disparo original para mantener la inclinación
+        Vector2 impulseDir = lastFireDirection != Vector2.zero ? lastFireDirection : (anchorPos - transform.position).normalized;
 
         if (springJoint != null)
         {
@@ -171,9 +167,6 @@ public class ArmLauncher : MonoBehaviour
             springJoint = null;
         }
 
-
-
-        // olo si el jugador se estaba MOVIENDO EN CONTRA
         Rigidbody2D playerRb = player.Rb;
         if (playerRb != null && impulseDir != Vector2.zero)
         {
@@ -198,14 +191,21 @@ public class ArmLauncher : MonoBehaviour
             {
                 float distance = Vector2.Distance(transform.position, anchorPos);
 
-                float baseForce = 8f; // más alto para que se note
+                float baseForce = 3f;
                 float hookImpulseForce = baseForce + distance * 2.5f;
 
                 float backSpeed = Mathf.Max(0f, -Vector2.Dot(playerVel, impulseDir));
                 hookImpulseForce += backSpeed * 12f;
 
-                Vector2 finalImpulse = impulseDir * hookImpulseForce;
-                finalImpulse.y *= 1.35f; // buff pa q se mueva mas arriba 
+                hookImpulseForce = Mathf.Clamp(hookImpulseForce, 0f, 40f); // para limitar hasta cuant ose puede impulsar, para q no vuele
+
+                Vector2 impulseDirNormalized = impulseDir.normalized;
+                Vector2 finalImpulse = impulseDirNormalized * hookImpulseForce;
+
+                if (impulseDirNormalized.y > 0.05f)
+                {
+                    finalImpulse.y += impulseDirNormalized.y * 3.5f;
+                }
 
                 playerRb.AddForce(finalImpulse, ForceMode2D.Impulse);
             }
@@ -231,7 +231,7 @@ public class ArmLauncher : MonoBehaviour
         currentProjectile = null;
         currentArmStretch = null;
 
-        yield return new WaitForSeconds(cooldownTime); // pa q no se spamee
+        yield return new WaitForSeconds(cooldownTime);
         canShoot = true;
     }
 }
