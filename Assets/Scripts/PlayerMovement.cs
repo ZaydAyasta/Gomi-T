@@ -5,7 +5,10 @@ public class PlayerMovement : MonoBehaviour
 {
     [Header("Movimiento")]
     public float speed = 5f;
+    public float walkSpeed = 3f;
     public float jumpForce = 17f;
+
+    private float currentSpeed;
 
     public float acceleration = 40f;
 
@@ -23,6 +26,7 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         sr = GetComponent<SpriteRenderer>();
+        currentSpeed = walkSpeed;
     }
 
     void Update()
@@ -30,7 +34,7 @@ public class PlayerMovement : MonoBehaviour
         float move = Input.GetAxisRaw("Horizontal");
 
         // Suavizamos la velocidad horizontal
-        float targetVelX = move * speed;
+        float targetVelX = move * currentSpeed;
         float newVelX = Mathf.MoveTowards(rb.linearVelocity.x, targetVelX, acceleration * Time.deltaTime);
         rb.linearVelocity = new Vector2(newVelX, rb.linearVelocity.y);
 
@@ -38,7 +42,7 @@ public class PlayerMovement : MonoBehaviour
         if (launcher != null && launcher.IsHoldingBack)
         {
             anim.SetBool("Hold", true);
-            anim.SetFloat("Speed", 0f);
+            anim.SetBool("Running", false);
 
             // 👉 Flip hacia el proyectil
             if (launcher.CurrentAnchor != null)
@@ -53,15 +57,26 @@ public class PlayerMovement : MonoBehaviour
             anim.SetBool("Hold", false);
             anim.SetFloat("Speed", Mathf.Abs(move));
 
-            // 👉 Flip normal con input
+            //Flip normal con input
             if (move > 0) sr.flipX = false;
             else if (move < 0) sr.flipX = true;
         }
 
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
         {
-            StartCoroutine(JumpWithDelay());
+            Jump();
             anim.SetBool("Jumping", true);
+        }
+
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            anim.SetBool("Running", true);
+            currentSpeed = speed;
+        }
+        else if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            anim.SetBool("Running", false);
+            currentSpeed = walkSpeed;
         }
 
         // CAÍDA
@@ -78,11 +93,8 @@ public class PlayerMovement : MonoBehaviour
     }
 
 
-    private IEnumerator JumpWithDelay()
+    private void Jump()
     {
-        anim.SetBool("Jumping", true);
-        yield return new WaitForSeconds(2f / 24f);
-
         rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0f);
         rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         isGrounded = false;
