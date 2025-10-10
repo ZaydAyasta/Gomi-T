@@ -288,6 +288,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10.5
+  walkSpeed: 4
   jumpForce: 20
   acceleration: 40
   anim: {fileID: 0}
