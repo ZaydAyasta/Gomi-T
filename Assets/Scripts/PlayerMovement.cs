@@ -21,11 +21,18 @@ public class PlayerMovement : MonoBehaviour
     [Header("Referencias")]
     public SpriteRenderer sr;
 
+    [Header("Aire")]
+    public float airAcceleration = 20f;   // menor que acceleration
+    public bool preserveVXInAir = true;   // mantiene vel.x si no hay input
+    public ElasticGrapple grapple;        // arrástralo en el inspector
+
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         sr = GetComponent<SpriteRenderer>();
+        if (!grapple) grapple = GetComponent<ElasticGrapple>();
         currentSpeed = walkSpeed;
     }
 
@@ -33,11 +40,32 @@ public class PlayerMovement : MonoBehaviour
     {
         float move = Input.GetAxisRaw("Horizontal");
 
-        // Suavizamos la velocidad horizontal
-        float targetVelX = move * currentSpeed;
-        float newVelX = Mathf.MoveTowards(rb.linearVelocity.x, targetVelX, acceleration * Time.deltaTime);
-        rb.linearVelocity = new Vector2(newVelX, rb.linearVelocity.y);
+        bool airLocked = grapple != null && grapple.IsLaunched;   // breve lock tras disparo
+        bool inAir = !isGrounded;
 
+        // Si estamos en aire o en lock de lanzamiento:
+        if (airLocked || inAir)
+        {
+            // Si no hay input y queremos preservar la velocidad, no la toques
+            if (preserveVXInAir && Mathf.Abs(move) < 0.01f)
+            {
+                // deja rb.linearVelocity.x tal cual
+            }
+            else
+            {
+                // con input, ajusta suavemente hacia el objetivo usando airAcceleration
+                float targetVelX = move * currentSpeed;
+                float newVelX = Mathf.MoveTowards(rb.linearVelocity.x, targetVelX, airAcceleration * Time.deltaTime);
+                rb.linearVelocity = new Vector2(newVelX, rb.linearVelocity.y);
+            }
+        }
+        else
+        {
+            // En suelo: suavizado normal
+            float targetVelX = move * currentSpeed;
+            float newVelX = Mathf.MoveTowards(rb.linearVelocity.x, targetVelX, acceleration * Time.deltaTime);
+            rb.linearVelocity = new Vector2(newVelX, rb.linearVelocity.y);
+        }
         ArmLauncher launcher = FindFirstObjectByType<ArmLauncher>();
         if (launcher != null && launcher.IsHoldingBack)
         {
