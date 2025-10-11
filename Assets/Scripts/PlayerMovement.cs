@@ -16,7 +16,7 @@ public class PlayerMovement : MonoBehaviour
     public Rigidbody2D Rb => rb;
 
     [HideInInspector] public Animator anim;
-    private bool isGrounded;
+    public bool isGrounded;
 
     [Header("Referencias")]
     public SpriteRenderer sr;
@@ -41,19 +41,20 @@ public class PlayerMovement : MonoBehaviour
         float move = Input.GetAxisRaw("Horizontal");
 
         bool airLocked = grapple != null && grapple.IsLaunched;   // breve lock tras disparo
-        bool inAir = !isGrounded;
 
         // Si estamos en aire o en lock de lanzamiento:
-        if (airLocked || inAir)
+        if (airLocked || !isGrounded)
         {
-            // Si no hay input y queremos preservar la velocidad, no la toques
+            if (isGrounded)
+            {
+                
+            }
             if (preserveVXInAir && Mathf.Abs(move) < 0.01f)
             {
                 // deja rb.linearVelocity.x tal cual
             }
             else
             {
-                // con input, ajusta suavemente hacia el objetivo usando airAcceleration
                 float targetVelX = move * currentSpeed;
                 float newVelX = Mathf.MoveTowards(rb.linearVelocity.x, targetVelX, airAcceleration * Time.deltaTime);
                 rb.linearVelocity = new Vector2(newVelX, rb.linearVelocity.y);
@@ -147,4 +148,6 @@ public class PlayerMovement : MonoBehaviour
     {
         isGrounded = false;
     }
+
+
 }

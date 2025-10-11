@@ -292,7 +292,11 @@ MonoBehaviour:
   jumpForce: 20
   acceleration: 40
   anim: {fileID: 0}
+  isGrounded: 0
   sr: {fileID: 0}
+  airAcceleration: 20
+  preserveVXInAir: 1
+  grapple: {fileID: 0}
 --- !u!212 &441510947
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -357,7 +361,7 @@ Transform:
   m_GameObject: {fileID: 441510945}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.33, y: 0.6, z: 0}
+  m_LocalPosition: {x: -26.21, y: 14.49, z: 0}
   m_LocalScale: {x: 0.5916748, y: 0.6120644, z: 0.62544906}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -400,7 +404,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.114568174, y: 0.1452465}
+  m_Offset: {x: 0.1377536, y: -0.18348646}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -410,7 +414,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 2.061788, y: 4.372093}
+  m_Size: {x: 1.8917594, y: 3.7146273}
   m_EdgeRadius: 0
 --- !u!50 &441510950
 Rigidbody2D:
@@ -477,23 +481,33 @@ MonoBehaviour:
   shoulder: {fileID: 2028454233}
   aimKey: 323
   altAimKey: 113
+  showTrayectory: 1
   hookMask:
     serializedVersion: 2
     m_Bits: 68
-  maxGrappleDistance: 12
+  maxGrappleDistance: 2
   restLenFactor: 1
   minRestLenFactor: 0.2
-  baseImpulse: 3
+  baseImpulse: 0
   stretchScale: 6
-  maxImpulse: 40
   liftIfFlat: 0
-  springFrequency: 3.5
-  springDamping: 0.3
+  launchMultiplier: 4
+  minLaunchImpulse: 0
+  stretchPower: 1.8
+  stretchDeadZone: 0.02
+  maxImpulse: 40
   ropeLR: {fileID: 1136021889}
   trajectoryLR: {fileID: 1523205144}
   ropeWidth: 0.06
   trajectoryPoints: 32
   trajectoryDt: 0.05
+  maxExtraStretch: 1
+  requireSpeedWhenAirborne: 1
+  minSpeedToLaunchAir: 4
+  lowSpeedThreshold: 0.6
+  calmTimeToCancel: 0.25
+  wallBraceUnlocked: 0
+  launchLockTime: 0.15
 --- !u!1 &489444079
 GameObject:
   m_ObjectHideFlags: 0
@@ -1111,7 +1125,7 @@ Transform:
   m_GameObject: {fileID: 665341226}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.9, y: 2, z: 0}
+  m_LocalPosition: {x: -8.43, y: 2, z: 0}
   m_LocalScale: {x: 0.96942014, y: 5.4568186, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
