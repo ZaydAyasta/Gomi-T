@@ -11,6 +11,9 @@ public class ElasticGrapple : MonoBehaviour
     public KeyCode aimKey = KeyCode.Mouse0;   // mantener para apuntar/enganchar; soltar = disparar
     public KeyCode altAimKey = KeyCode.Q;
 
+    [Header("Ver Trayectoria")]
+    public bool showTrayectory = true;
+
     [Header("Hook")]
     public LayerMask hookMask;               // capas agarrables (NO Player)
     public float maxGrappleDistance = 12f;   // alcance
@@ -35,6 +38,20 @@ public class ElasticGrapple : MonoBehaviour
     public float ropeWidth = 0.06f;
     public int trajectoryPoints = 32;
     public float trajectoryDt = 0.05f;
+
+    [Header("Stretch Limit")]
+    public float maxExtraStretch = 6f; // metros extra por encima de restLen
+
+    [Header("Airborne gating (sin suelo)")]
+    public bool requireSpeedWhenAirborne = true;  // activa la regla
+    public float minSpeedToLaunchAir = 4f;        // m/s para poder catapultar en aire
+    public float lowSpeedThreshold = 0.6f;      // por debajo de esto se considera “quieto”
+    public float calmTimeToCancel = 0.25f;     // cuánto tiempo “quieto” para auto-soltar
+
+    // Hook futuro: pared (aún desactivado)
+    public bool wallBraceUnlocked = false;
+
+    float _lowSpeedTimer = 0f;
 
     // --- estado ---
     Rigidbody2D rb;
@@ -74,12 +91,16 @@ public class ElasticGrapple : MonoBehaviour
         HideRope();
         HideTrajectory();
     }
-
+    bool IsGrounded()
+    {
+        return player != null && player.isGrounded;
+    }
     void Update()
     {
         bool hold = Input.GetKey(aimKey) || Input.GetKey(altAimKey);
         bool down = Input.GetKeyDown(aimKey) || Input.GetKeyDown(altAimKey);
         bool up = Input.GetKeyUp(aimKey) || Input.GetKeyUp(altAimKey);
+
 
         Vector2 sh = ShoulderWorld();
         Vector2 fwd = Forward();
@@ -97,6 +118,16 @@ public class ElasticGrapple : MonoBehaviour
             else HideRope();
 
             HideTrajectory();
+
+            if (requireSpeedWhenAirborne && !IsGrounded())
+            {
+                float spd = rb.linearVelocity.magnitude;
+
+                if (spd < lowSpeedThreshold) _lowSpeedTimer += Time.deltaTime;
+                else _lowSpeedTimer = 0f;
+
+                if (_lowSpeedTimer >= calmTimeToCancel) { _lowSpeedTimer = 0f; ReleaseNoImpulse(); return; }
+            }
         }
         else
         {
@@ -125,10 +156,41 @@ public class ElasticGrapple : MonoBehaviour
             _cachedForceMag = forceMagPrev;
 
             Vector2 v0 = rb.linearVelocity + impulsePrev / rb.mass;
-            DrawTrajectory(rb.position, v0);
+            if(showTrayectory)DrawTrajectory(rb.position, v0);
 
             // al soltar:
             if (up) LaunchAndDetach(launchDir);
+        }
+    }
+
+    void FixedUpdate()
+    {
+        if (!attached) return;
+
+        // usa SIEMPRE el mismo origen que usas para la cuerda/preview
+        Vector2 sh = ShoulderWorld();                       // hombro en mundo
+        Vector2 delta = sh - anchorWorld;                      // ancla -> hombro
+        float dist = delta.magnitude;
+        if (dist < 1e-6f) return;
+
+        float limit = restLen + maxExtraStretch;               // tu tope
+
+
+        if (dist > limit)
+        {
+            Vector2 radial = delta / dist;                    // dirección “hacia afuera”
+
+            // 1) elimina componente de velocidad que te aleja (no más alejarse)
+            float awaySpeed = Vector2.Dot(rb.linearVelocity, radial);
+            if (awaySpeed > 0f)
+                rb.linearVelocity -= radial * awaySpeed;
+
+            // 2) corrige la posición AL BORDE (proyección radial)
+            float excess = dist - limit;                      // cuánto te pasaste
+            rb.position -= radial * excess;                   // vuelve justo a la circunf.
+
+            // (opcional) un pequeño pegamento para que no vibre en el borde:
+            // rb.position -= radial * Mathf.Min(excess, 0.01f);
         }
     }
 
@@ -139,6 +201,12 @@ public class ElasticGrapple : MonoBehaviour
     {
         bool left = (player != null && player.sr != null && player.sr.flipX);
         return left ? Vector2.left : Vector2.right;
+    }
+
+    bool IsWallBracingActive()
+    {
+        // FUTURO: si wallBraceUnlocked y estás pegado a pared + input, devuelve true.
+        return false;
     }
 
     void AttachAt(Vector2 point)
@@ -156,6 +224,13 @@ public class ElasticGrapple : MonoBehaviour
 
     void LaunchAndDetach(Vector2 _ignore)
     {
+        // Gate: en aire y sin “wall brace” necesitas velocidad para poder catapultar
+        if (requireSpeedWhenAirborne && !IsGrounded())
+        {
+            if (rb.linearVelocity.magnitude < minSpeedToLaunchAir)
+            { ReleaseNoImpulse(); return; }
+        }
+
         attached = false;
 
         // Usa exactamente la fuerza y dirección que acabas de previsualizar
@@ -213,6 +288,21 @@ public class ElasticGrapple : MonoBehaviour
     void LateUpdate()
     {
         if (IsLaunched && Time.time >= _unlockAt) IsLaunched = false;
+    }
+    void ReleaseNoImpulse()
+    {
+        // suelta el estado de agarre
+        attached = false;
+
+        // limpia visuales
+        HideRope();
+        HideTrajectory();
+
+        // resetea “carga” y timers
+        maxDist = 0f;          // si llevas el máximo estiramiento
+        _lowSpeedTimer = 0f;   // si usas la lógica de “calmado en aire”
+
+        IsLaunched = false;
     }
 
     void HideTrajectory() { if (trajectoryLR) trajectoryLR.enabled = false; }
