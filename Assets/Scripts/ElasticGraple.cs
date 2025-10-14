@@ -32,6 +32,10 @@ public class ElasticGrapple : MonoBehaviour
     public float stretchDeadZone = 0.02f;   // ignora estiramientos ínfimos
     public float maxImpulse = 140f;         // sube el límite
 
+    [Header("Cheat: boost proporcional al bajar")]
+    public float maxDownBoost = 5f;      // boost vertical máximo (cuando llegas al fondo)
+    public float downBoostPower = 1.4f;  // >1 = crece fuerte al final; 1 = lineal
+
     [Header("Visual")]
     public LineRenderer ropeLR;              // cuerda
     public LineRenderer trajectoryLR;        // trayectoria
@@ -48,6 +52,12 @@ public class ElasticGrapple : MonoBehaviour
     public float lowSpeedThreshold = 0.6f;      // por debajo de esto se considera “quieto”
     public float calmTimeToCancel = 0.25f;     // cuánto tiempo “quieto” para auto-soltar
 
+    [Header("Shoulder Aim Offset")]
+    public float shoulderAimRange = 0.5f;     // rango máximo arriba/abajo (en unidades del mundo)
+    public float shoulderAimSpeed = 5f;       // qué tan rápido se interpola
+    private float shoulderYOffset = 0f;       // offset actual
+    private float defaultShoulderY;
+
     // Hook futuro: pared (aún desactivado)
     public bool wallBraceUnlocked = false;
 
@@ -63,6 +73,9 @@ public class ElasticGrapple : MonoBehaviour
     float maxDist = 0f;    // mayor distancia alcanzada desde que me enganch
     private Vector2 _cachedLaunchDir;
     private float _cachedForceMag;
+    private float _cachedExtraYBoost = 0f;
+
+    Vector3 end;           // punto final de la cuerda (ancla)
 
     public bool IsLaunched { get; private set; }
     public float launchLockTime = 0.15f;
@@ -86,6 +99,10 @@ public class ElasticGrapple : MonoBehaviour
             trajectoryLR = gameObject.AddComponent<LineRenderer>();
             trajectoryLR.material = new Material(Shader.Find("Sprites/Default"));
         }
+
+        if (shoulder != null)
+            defaultShoulderY = shoulder.localPosition.y;
+
         SetupLR(ropeLR, ropeWidth);
         SetupLR(trajectoryLR, ropeWidth * 0.8f);
         HideRope();
@@ -104,18 +121,16 @@ public class ElasticGrapple : MonoBehaviour
 
         Vector2 sh = ShoulderWorld();
         Vector2 fwd = Forward();
+        Vector2? nearest = Vector2.zero;
+        
 
         if (!attached)
         {
-            // apunto siempre "al frente" (según flip) y engancho lo primero
-            RaycastHit2D hit = Physics2D.Raycast(sh, fwd, maxGrappleDistance, hookMask);
+            nearest = FindNearestAnchor(sh);
+            end = nearest.HasValue ? (Vector3)nearest.Value : (Vector3)(sh + fwd * maxGrappleDistance);
 
-            if (hold && hit.collider != null && down)
-                AttachAt(hit.point);
-
-            // puntero visual
-            if (hold) DrawRope(sh, hit.collider ? (Vector3)hit.point : (Vector3)(sh + fwd * maxGrappleDistance));
-            else HideRope();
+            if (hold && nearest.HasValue)
+                AttachAt(nearest.Value);
 
             HideTrajectory();
 
@@ -131,9 +146,35 @@ public class ElasticGrapple : MonoBehaviour
         }
         else
         {
+
+            if(showTrayectory)DrawRope(sh, end);
+           
             // distancia actual y ACUMULAR la máxima
             float currentDist = Vector2.Distance(sh, anchorWorld);
             maxDist = Mathf.Max(maxDist, currentDist);
+
+            if (IsGrounded())
+            {
+                float mouseY = cam.ScreenToWorldPoint(Input.mousePosition).y;
+                float playerY = transform.position.y;
+
+                // calcula cuánto más abajo está el mouse respecto al jugador
+                float rel = Mathf.Clamp((playerY - mouseY), 0f, 1f);
+
+                // valor positivo -> baja el hombro hasta shoulderAimRange
+                float targetOffset = -rel * shoulderAimRange; // negativo = hacia abajo
+
+                // Interpola suavemente
+                shoulderYOffset = Mathf.Lerp(shoulderYOffset, targetOffset, Time.deltaTime * shoulderAimSpeed);
+
+                // Aplica al transform del hombro (solo eje Y)
+                if (shoulder != null)
+                {
+                    Vector3 local = shoulder.localPosition;
+                    local.y = defaultShoulderY + shoulderYOffset;
+                    shoulder.localPosition = local;
+                }
+            }
 
             // dirección de lanzamiento = hombro -> ancla
             Vector2 launchDir = (anchorWorld - sh).sqrMagnitude > 1e-6f ?
@@ -151,6 +192,17 @@ public class ElasticGrapple : MonoBehaviour
 
             Vector2 impulsePrev = launchDir * forceMagPrev;
             if (Mathf.Abs(launchDir.y) < 0.12f) impulsePrev.y += liftIfFlat;
+
+            float extraY = 0f;
+            if (shoulder != null && shoulderAimRange > 0f)
+            {
+                // depth: 0 = en default; 1 = en el mínimo hacia abajo
+                float depth = Mathf.Clamp01(-shoulderYOffset / shoulderAimRange);
+                float k = Mathf.Pow(depth, downBoostPower);
+                extraY = maxDownBoost * k;     // boost vertical procedimental
+                impulsePrev.y += extraY;       // aplicar al preview
+            }
+            _cachedExtraYBoost = extraY;
 
             _cachedLaunchDir = (anchorWorld - sh).sqrMagnitude > 1e-6f ? (anchorWorld - sh).normalized : Forward();
             _cachedForceMag = forceMagPrev;
@@ -240,6 +292,9 @@ public class ElasticGrapple : MonoBehaviour
         Vector2 impulse = launchDir * forceMag;
         if (Mathf.Abs(launchDir.y) < 0.12f) impulse.y += liftIfFlat;
 
+        if (_cachedExtraYBoost > 0f)
+            impulse.y += _cachedExtraYBoost;
+
         rb.AddForce(impulse, ForceMode2D.Impulse);
         IsLaunched = true;
         _unlockAt = Time.time + launchLockTime;
@@ -248,6 +303,14 @@ public class ElasticGrapple : MonoBehaviour
         maxDist = 0f;
         HideRope();
         HideTrajectory();
+
+        if (shoulder != null)
+        {
+            Vector3 local = shoulder.localPosition;
+            local.y = defaultShoulderY;
+            shoulder.localPosition = local;
+            shoulderYOffset = 0f;
+        }
     }
 
     // ---------- visuals ----------
@@ -306,6 +369,35 @@ public class ElasticGrapple : MonoBehaviour
     }
 
     void HideTrajectory() { if (trajectoryLR) trajectoryLR.enabled = false; }
+
+    Vector2? FindNearestAnchor(Vector2 from)
+    {
+        // todos los colliders cercanos en el radio
+        var cols = Physics2D.OverlapCircleAll(from, maxGrappleDistance, hookMask);
+        if (cols == null || cols.Length == 0) return null;
+
+        float bestDist = float.PositiveInfinity;
+        Vector2 bestPoint = default;
+
+        foreach (var c in cols)
+        {
+            // punto de superficie más cercano de ese collider al hombro
+            Vector2 p = c.ClosestPoint(from);
+            float d = Vector2.Distance(from, p);
+
+            // ignorar puntos prácticamente encima del hombro (ruido)
+            if (d < 0.03f) continue;
+
+            if (d < bestDist)
+            {
+                bestDist = d;
+                bestPoint = p;
+            }
+        }
+
+        if (float.IsInfinity(bestDist)) return null;
+        return bestPoint;
+    }
 
     // --- API para anims (si te sirve) ---
     public bool IsHooked => attached;
